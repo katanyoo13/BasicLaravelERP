@@ -1,0 +1,54 @@
+/* resources/css/styles.css */
+
+body {
+    background-color: #A54141; /* เปลี่ยนสีพื้นหลังที่นี่ */
+}
+
+.sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh; /* เพิ่มบรรทัดนี้เพื่อให้ sidebar ยาวลงมาจนถึงขอบล่าง */
+}
+
+.sidebar .nav-link {
+    color: #333; /* เปลี่ยนสีฟอนต์ของเมนูหลัก */
+    padding: 10px;
+}
+
+.sidebar .nav-link.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.sidebar .collapse {
+    transition: height 0.3s ease;
+}
+
+.sidebar .collapse.show {
+    height: auto;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.sidebar .collapse .nav-link {
+    color: #555; /* เปลี่ยนสีฟอนต์ของเมนูย่อย */
+}
+
+.logo {
+    height: 100px;
+    margin-bottom: 50px; /* ปรับค่าตามต้องการ */
+}
+
+.logo-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
