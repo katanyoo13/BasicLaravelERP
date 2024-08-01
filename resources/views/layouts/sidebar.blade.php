@@ -13,9 +13,7 @@
             </a>
             <div class="collapse" id="dashboardSubmenu">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="#" class="nav-link link-dark">Overview</a></li>
-                    <li><a href="#" class="nav-link link-dark">Reports</a></li>
-                    <li><a href="#" class="nav-link link-dark">Notifications</a></li>
+                    
                 </ul>
             </div>
         </li>

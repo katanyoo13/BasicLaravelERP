@@ -13,6 +13,8 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        $totalIncome = GeneralLedgers::where('account_type', 'Income')->sum('balance');
+        $totalExpense = GeneralLedgers::where('account_type', 'Expense')->sum('balance');
         $totalAssets = GeneralLedgers::sum('balance');
         
         $salesSummary = AccountsReceivables::where('created_at', '>=', Carbon::now()->startOfMonth())
@@ -27,6 +29,6 @@ class DashboardController extends Controller
                             ->where('status', '!=', 'Paid')
                             ->get();
 
-        return view('dashboard.index', compact('totalAssets', 'salesSummary', 'purchasesSummary', 'lowInventoryAlerts', 'paymentDueAlerts'));
+        return view('dashboard.index', compact('totalIncome', 'totalExpense', 'totalAssets', 'salesSummary', 'purchasesSummary', 'lowInventoryAlerts', 'paymentDueAlerts'));
     }
 }

@@ -1,13 +1,13 @@
 /* resources/css/styles.css */
 
 body {
-    background-color: #A54141; /* เปลี่ยนสีพื้นหลังที่นี่ */
+    background-color: #A54141; /* เปลี่ยนสีพื้นหลังของหน้า */
 }
 
 .sidebar {
     min-width: 250px;
     max-width: 250px;
-    background-color: #f8f9fa;
+    background-color: #3498DB; /* เปลี่ยนสีพื้นหลังของ Sidebar ให้เป็นสีฟ้าสดใส */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,12 +15,12 @@ body {
 }
 
 .sidebar .nav-link {
-    color: #333; /* เปลี่ยนสีฟอนต์ของเมนูหลัก */
+    color: #000000; /* เปลี่ยนสีฟอนต์ของเมนูหลักให้เป็นสีขาว */
     padding: 10px;
 }
 
 .sidebar .nav-link.active {
-    background-color: #007bff;
+    background-color: #2C3E50; /* สีพื้นหลังของเมนูที่ถูกเลือกให้เป็นสีเข้ม */
     color: white;
 }
 
@@ -33,12 +33,12 @@ body {
 }
 
 .sidebar .nav-link:hover {
-    background-color: #007bff;
+    background-color: #2C3E50; /* สีพื้นหลังของเมนูเมื่อ hover ให้เป็นสีเข้ม */
     color: white;
 }
 
 .sidebar .collapse .nav-link {
-    color: #555; /* เปลี่ยนสีฟอนต์ของเมนูย่อย */
+    color: #000000; /* เปลี่ยนสีฟอนต์ของเมนูย่อยให้เป็นสีขาว */
 }
 
 .logo {
