@@ -19,6 +19,12 @@ document.addEventListener('DOMContentLoaded', function() {
             var collapse = new bootstrap.Collapse(target, {
                 toggle: true
             });
+            // เปลี่ยนขนาดฟอนต์ของเมนูย่อย
+            var subLinks = target.querySelectorAll('.nav-link');
+            subLinks.forEach(function(subLink) {
+                subLink.style.fontSize = '0.9rem';
+                subLink.style.color = '#B0B0B0';
+            });
         });
     });
 });

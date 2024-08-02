@@ -1,44 +1,45 @@
 /* resources/css/styles.css */
 
 body {
-    background-color: #A54141; /* เปลี่ยนสีพื้นหลังของหน้า */
+    background-color: #ae5454; /* เปลี่ยนสีพื้นหลังของหน้า */
 }
 
 .sidebar {
     min-width: 250px;
     max-width: 250px;
-    background-color: #3498DB; /* เปลี่ยนสีพื้นหลังของ Sidebar ให้เป็นสีฟ้าสดใส */
+    background-color: #A54141 !important; /* เปลี่ยนสีพื้นหลังของ Sidebar */
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh; /* เพิ่มบรรทัดนี้เพื่อให้ sidebar ยาวลงมาจนถึงขอบล่าง */
+    min-height: 100vh; /* ให้ sidebar ยาวลงมาจนถึงขอบล่าง */
 }
 
 .sidebar .nav-link {
-    color: #000000; /* เปลี่ยนสีฟอนต์ของเมนูหลักให้เป็นสีขาว */
-    padding: 10px;
+    color: #ffffff; /* สีฟอนต์ของเมนูหลัก */
+    padding: 15px 20px; /* เพิ่ม padding เพื่อความสมดุล */
+    font-size: 1rem; /* ขนาดฟอนต์ของเมนูหลัก */
+    text-align: left; /* จัดชิดซ้ายเพื่อความอ่านง่าย */
+    width: 100%; /* ให้เมนูเต็มความกว้างของ sidebar */
 }
 
 .sidebar .nav-link.active {
-    background-color: #2C3E50; /* สีพื้นหลังของเมนูที่ถูกเลือกให้เป็นสีเข้ม */
-    color: white;
+    background-color: #1B2631; /* สีพื้นหลังของเมนูที่ถูกเลือก */
+    color: white; /* สีฟอนต์ของเมนูที่ถูกเลือก */
 }
 
 .sidebar .collapse {
-    transition: height 0.3s ease;
+    transition: height 0.3s ease, font-size 0.3s ease, color 0.3s ease; /* เพิ่ม transition เพื่อให้แสดงผลลื่นไหล */
 }
 
-.sidebar .collapse.show {
-    height: auto;
+.sidebar .collapse.show .nav-link {
+    color: #B0B0B0; /* สีฟอนต์ของเมนูย่อย */
+    padding-left: 30px; /* เพิ่ม padding ทางซ้ายเพื่อให้เมนูย่อยยุบตัว */
+    font-size: 0.9rem; /* ขนาดฟอนต์ของเมนูย่อย */
 }
 
 .sidebar .nav-link:hover {
-    background-color: #2C3E50; /* สีพื้นหลังของเมนูเมื่อ hover ให้เป็นสีเข้ม */
-    color: white;
-}
-
-.sidebar .collapse .nav-link {
-    color: #000000; /* เปลี่ยนสีฟอนต์ของเมนูย่อยให้เป็นสีขาว */
+    background-color: #1B2631; /* สีพื้นหลังของเมนูเมื่อ hover */
+    color: white; /* สีฟอนต์ของเมนูเมื่อ hover */
 }
 
 .logo {
@@ -51,4 +52,5 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px 0; /* เพิ่ม padding บนและล่างเพื่อให้ดูสมดุล */
 }
