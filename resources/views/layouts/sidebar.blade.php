@@ -1,7 +1,7 @@
 <!-- resources/views/layouts/sidebar.blade.php -->
-<div class="d-flex flex-column flex-shrink-0 p-3 bg-light sidebar" style="width: 250px; min-height: 100vh;">
-    <div class="logo-container">
-        <a href="/" class="col-md-6">
+<div class="d-flex flex-column flex-shrink-0 p-3 sidebar" style="width: 250px; min-height: 100vh;">
+    <div class="logo-container mb-3">
+        <a href="/" class="w-100 d-flex justify-content-center align-items-center">
             <img src="{{ asset('images/new_logo.png') }}" alt="ERP Logo" class="logo">
         </a>
     </div>
@@ -13,7 +13,7 @@
             </a>
             <div class="collapse" id="dashboardSubmenu">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    
+                    <!-- เมนูย่อยที่นี่ -->
                 </ul>
             </div>
         </li>

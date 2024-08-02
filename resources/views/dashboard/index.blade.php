@@ -22,7 +22,7 @@
         <div class="col-md-4">
             <div class="card text-center">
                 <div class="card-header">
-                    <h3>Total Expense</h3>
+                    <h3>Total Expenses</h3>
                 </div>
                 <div class="card-body">
                     <h2>{{ $totalExpense }}</h2>
@@ -44,7 +44,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h3>Sales Summary Graph</h3>
+                    <h3>Sales Performance</h3>
                 </div>
                 <div class="card-body">
                     <canvas id="salesSummaryChart"></canvas>
@@ -54,7 +54,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h3>Purchases Summary Graph</h3>
+                    <h3>Purchases Performance</h3>
                 </div>
                 <div class="card-body">
                     <canvas id="purchasesSummaryChart"></canvas>
@@ -86,54 +86,5 @@
 
 @section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var salesSummary = {{ $salesSummary }};
-        var purchasesSummary = {{ $purchasesSummary }};
-
-        var salesCtx = document.getElementById('salesSummaryChart').getContext('2d');
-        var salesSummaryChart = new Chart(salesCtx, {
-            type: 'bar',
-            data: {
-                labels: ['Sales'],
-                datasets: [{
-                    label: 'Sales Summary',
-                    data: [salesSummary],
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        var purchasesCtx = document.getElementById('purchasesSummaryChart').getContext('2d');
-        var purchasesSummaryChart = new Chart(purchasesCtx, {
-            type: 'bar',
-            data: {
-                labels: ['Purchases'],
-                datasets: [{
-                    label: 'Purchases Summary',
-                    data: [purchasesSummary],
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    });
-</script>
+@vite(['resources/js/dashboard.js'])
 @endsection
