@@ -13,14 +13,13 @@ return new class extends Migration
     {
         Schema::create('general_ledgers', function (Blueprint $table) {
             $table->id('ledger_id');
-            $table->string('account_number');
+            $table->string('account_number')->unique();
             $table->string('account_name');
-            $table->string('account_type');
+            $table->enum('account_type', ['Assets', 'Liabilities', 'Equity', 'Revenue', 'Expenses']);
             $table->decimal('balance', 15, 2);
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.
