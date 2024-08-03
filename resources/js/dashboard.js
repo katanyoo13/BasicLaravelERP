@@ -1,8 +1,9 @@
-// resources/js/dashboard.js
-
 document.addEventListener("DOMContentLoaded", function() {
-    var salesSummary = parseFloat('{{ $salesSummary }}');
-    var purchasesSummary = parseFloat('{{ $purchasesSummary }}');
+    var salesSummary = parseFloat(window.salesSummary);
+    var purchasesSummary = parseFloat(window.purchasesSummary);
+
+    console.log("Sales Summary: ", salesSummary);
+    console.log("Purchases Summary: ", purchasesSummary);
 
     var salesCtx = document.getElementById('salesSummaryChart').getContext('2d');
     var salesSummaryChart = new Chart(salesCtx, {

@@ -1,4 +1,3 @@
-<!-- resources/views/dashboard/index.blade.php -->
 @extends('layouts.app')
 
 @section('content')
@@ -15,7 +14,7 @@
                     <h3>Total Income</h3>
                 </div>
                 <div class="card-body">
-                    <h2>{{ $totalIncome }}</h2>
+                    <h2>{{ number_format($totalIncome, 2) }}</h2>
                 </div>
             </div>
         </div>
@@ -25,7 +24,7 @@
                     <h3>Total Expenses</h3>
                 </div>
                 <div class="card-body">
-                    <h2>{{ $totalExpense }}</h2>
+                    <h2>{{ number_format($totalExpense, 2) }}</h2>
                 </div>
             </div>
         </div>
@@ -35,7 +34,7 @@
                     <h3>Total Assets</h3>
                 </div>
                 <div class="card-body">
-                    <h2>{{ $totalAssets }}</h2>
+                    <h2>{{ number_format($totalAssets, 2) }}</h2>
                 </div>
             </div>
         </div>
@@ -48,6 +47,7 @@
                 </div>
                 <div class="card-body">
                     <canvas id="salesSummaryChart"></canvas>
+                    <h4>Total Sales: {{ number_format($salesSummary, 2) }}</h4>
                 </div>
             </div>
         </div>
@@ -58,6 +58,7 @@
                 </div>
                 <div class="card-body">
                     <canvas id="purchasesSummaryChart"></canvas>
+                    <h4>Total Purchases: {{ number_format($purchasesSummary, 2) }}</h4>
                 </div>
             </div>
         </div>
@@ -87,4 +88,8 @@
 @section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 @vite(['resources/js/dashboard.js'])
+<script>
+    window.salesSummary = {{ number_format($salesSummary, 2, '.', '') }};
+    window.purchasesSummary = {{ number_format($purchasesSummary, 2, '.', '') }};
+</script>
 @endsection

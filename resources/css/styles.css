@@ -1,13 +1,11 @@
-/* resources/css/styles.css */
-
 body {
-    background-color: #ae5454; /* เปลี่ยนสีพื้นหลังของหน้า */
+    background-color: #bb383f; /* เปลี่ยนสีพื้นหลังของหน้า */
 }
 
 .sidebar {
     min-width: 250px;
     max-width: 250px;
-    background-color: #A54141 !important; /* เปลี่ยนสีพื้นหลังของ Sidebar */
+    background-color: #b4232a !important; /* เปลี่ยนสีพื้นหลังของ Sidebar */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,8 +21,8 @@ body {
 }
 
 .sidebar .nav-link.active {
-    background-color: #1B2631; /* สีพื้นหลังของเมนูที่ถูกเลือก */
-    color: white; /* สีฟอนต์ของเมนูที่ถูกเลือก */
+    color: #e3e36f; /* สีฟอนต์ของเมนูที่ถูกเลือก */
+    background-color: transparent !important;
 }
 
 .sidebar .collapse {
@@ -38,8 +36,8 @@ body {
 }
 
 .sidebar .nav-link:hover {
-    background-color: #1B2631; /* สีพื้นหลังของเมนูเมื่อ hover */
-    color: white; /* สีฟอนต์ของเมนูเมื่อ hover */
+    background-color: transparent !important;
+    color: #e3e36f; /* สีฟอนต์ของเมนูเมื่อ hover */
 }
 
 .logo {
@@ -53,4 +51,53 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px 0; /* เพิ่ม padding บนและล่างเพื่อให้ดูสมดุล */
+}
+
+.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+form {
+    max-width: 600px; /* กำหนดความกว้างของแบบฟอร์ม */
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"], select {
+    width: 100%; /* กำหนดความกว้างของ input และ select ให้เท่ากัน */
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #e3e36f;
+    padding: 8px;
+    text-align: center;
+}
+
+.action-btn {
+    width: 75px; /* Adjust this value as needed */
+    display: inline-block;
+    text-align: center;
+    padding: 5px 0; /* Adjust this value as needed */
+    margin-right: 5px;
+    gap: 5px
 }

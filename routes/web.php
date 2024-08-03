@@ -1,24 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GeneralLedgerController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LedgerAccountController;
 use App\Http\Controllers\JournalController;
 use App\Http\Controllers\JournalEntryDetailController;
-use App\Http\Controllers\AccountsReceivableController;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\AccountsPayableController;
-use App\Http\Controllers\SupplierController;
-use App\Http\Controllers\PurchaseOrderController;
-use App\Http\Controllers\PurchaseOrderDetailController;
-use App\Http\Controllers\SalesOrderController;
-use App\Http\Controllers\SalesOrderDetailController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\InventoryManagementController;
-use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\ProfileController;
 
 // Authentication Routes
@@ -45,22 +39,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Resource Routes for models
-Route::resource('general-ledgers', GeneralLedgerController::class);
+// Dashboard route
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
+// Resource routes
+Route::resource('ledger_accounts', LedgerAccountController::class);
 Route::resource('journals', JournalController::class);
-Route::resource('journal-entry-details', JournalEntryDetailController::class);
-Route::resource('accounts-receivables', AccountsReceivableController::class);
-Route::resource('customers', CustomerController::class);
-Route::resource('accounts-payables', AccountsPayableController::class);
-Route::resource('suppliers', SupplierController::class);
-Route::resource('purchase-orders', PurchaseOrderController::class);
-Route::resource('purchase-order-details', PurchaseOrderDetailController::class);
-Route::resource('sales-orders', SalesOrderController::class);
-Route::resource('sales-order-details', SalesOrderDetailController::class);
-Route::resource('products', ProductController::class);
-Route::resource('inventory-managements', InventoryManagementController::class);
-Route::resource('employees', EmployeeController::class);
-
-
-
-Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+Route::resource('journal_entry_details', JournalEntryDetailController::class);
