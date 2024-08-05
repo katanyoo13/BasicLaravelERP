@@ -19,24 +19,36 @@ class DashboardController extends Controller
         $totalAssets = GeneralLedgers::where('account_type', 'Assets')->sum('balance');
 
         // Sales and Purchases data
-        $salesData = JournalEntryDetails::selectRaw('DATE(created_at) as date, SUM(credit) as amount')
-                                            ->where('created_at', '>=', Carbon::now()->startOfMonth())
+        $salesData = JournalEntryDetails::selectRaw('YEAR(created_at) as year, MONTH(created_at) as month, SUM(credit) as amount')
+                                            ->where('created_at', '>=', Carbon::now()->startOfYear())
                                             ->whereHas('ledgerAccount', function ($query) {
                                                 $query->where('account_type', 'Revenue');
                                             })
-                                            ->groupBy('date')
+                                            ->groupBy('year', 'month')
                                             ->get();
 
-        $purchasesData = JournalEntryDetails::selectRaw('DATE(created_at) as date, SUM(debit) as amount')
-                                                ->where('created_at', '>=', Carbon::now()->startOfMonth())
+        $purchasesData = JournalEntryDetails::selectRaw('YEAR(created_at) as year, MONTH(created_at) as month, SUM(debit) as amount')
+                                                ->where('created_at', '>=', Carbon::now()->startOfYear())
                                                 ->whereHas('ledgerAccount', function ($query) {
                                                     $query->where('account_type', 'Expenses');
                                                 })
-                                                ->groupBy('date')
+                                                ->groupBy('year', 'month')
                                                 ->get();
 
-        $salesSummary = $salesData->sum('amount');
-        $purchasesSummary = $purchasesData->sum('amount');
+        // Prepare data for the chart
+        $salesByMonth = array_fill(1, 12, 0);
+        $purchasesByMonth = array_fill(1, 12, 0);
+
+        foreach ($salesData as $data) {
+            $salesByMonth[$data->month] = $data->amount;
+        }
+
+        foreach ($purchasesData as $data) {
+            $purchasesByMonth[$data->month] = $data->amount;
+        }
+
+        $salesSummary = array_sum($salesByMonth);
+        $purchasesSummary = array_sum($purchasesByMonth);
 
         // Alerts
         $lowInventoryAlerts = InventoryManagement::where('quantity', '<', 10)->get();
@@ -46,11 +58,9 @@ class DashboardController extends Controller
 
         return view('dashboard.index', compact(
             'totalIncome', 'totalExpense', 'totalAssets', 
-            'salesData', 'purchasesData', 
+            'salesByMonth', 'purchasesByMonth', 
             'salesSummary', 'purchasesSummary',
             'lowInventoryAlerts', 'paymentDueAlerts'
         ));
     }
 }
-
-

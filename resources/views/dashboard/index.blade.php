@@ -89,7 +89,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 @vite(['resources/js/dashboard.js'])
 <script>
-    window.salesSummary = {{ number_format($salesSummary, 2, '.', '') }};
-    window.purchasesSummary = {{ number_format($purchasesSummary, 2, '.', '') }};
+    window.salesByMonth = @json($salesByMonth);
+    window.purchasesByMonth = @json($purchasesByMonth);
 </script>
 @endsection

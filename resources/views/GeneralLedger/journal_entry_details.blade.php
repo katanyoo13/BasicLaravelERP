@@ -12,6 +12,7 @@
                 <th>Debit</th>
                 <th>Credit</th>
                 <th>Description</th>
+                <th>Date</th> <!-- เพิ่มคอลัมน์วันที่ -->
                 <th>Action</th>
             </tr>
         </thead>
@@ -23,6 +24,7 @@
                 <td>{{ $detail->debit }}</td>
                 <td>{{ $detail->credit }}</td>
                 <td>{{ $detail->description }}</td>
+                <td>{{ $detail->created_at->format('Y-m-d') }}</td> <!-- แสดงวันที่ -->
                 <td>
                     <a href="{{ route('journal_entry_details.edit', $detail->detail_id) }}" class="btn btn-primary action-btn">Edit</a>
                     <form action="{{ route('journal_entry_details.destroy', $detail->detail_id) }}" method="POST" style="display:inline-block;">
