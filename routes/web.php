@@ -37,12 +37,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
+    // Dashboard route
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+    
+    // Resource routes
+    Route::resource('ledger_accounts', LedgerAccountController::class);
+    Route::resource('journals', JournalController::class);
+    Route::resource('journal_entry_details', JournalEntryDetailController::class);
 });
-
-// Dashboard route
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-
-// Resource routes
-Route::resource('ledger_accounts', LedgerAccountController::class);
-Route::resource('journals', JournalController::class);
-Route::resource('journal_entry_details', JournalEntryDetailController::class);
