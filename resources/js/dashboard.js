@@ -1,18 +1,20 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var salesSummary = parseFloat(window.salesSummary);
-    var purchasesSummary = parseFloat(window.purchasesSummary);
+    var salesByMonth = window.salesByMonth;
+    var purchasesByMonth = window.purchasesByMonth;
 
-    console.log("Sales Summary: ", salesSummary);
-    console.log("Purchases Summary: ", purchasesSummary);
+    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+    console.log("Sales Data: ", salesByMonth);
+    console.log("Purchases Data: ", purchasesByMonth);
 
     var salesCtx = document.getElementById('salesSummaryChart').getContext('2d');
     var salesSummaryChart = new Chart(salesCtx, {
         type: 'bar',
         data: {
-            labels: ['Sales'],
+            labels: months,
             datasets: [{
                 label: 'Sales Summary',
-                data: [salesSummary],
+                data: Object.values(salesByMonth),
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 borderColor: 'rgba(54, 162, 235, 1)',
                 borderWidth: 1
@@ -31,10 +33,10 @@ document.addEventListener("DOMContentLoaded", function() {
     var purchasesSummaryChart = new Chart(purchasesCtx, {
         type: 'bar',
         data: {
-            labels: ['Purchases'],
+            labels: months,
             datasets: [{
                 label: 'Purchases Summary',
-                data: [purchasesSummary],
+                data: Object.values(purchasesByMonth),
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 1
