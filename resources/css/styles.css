@@ -53,6 +53,10 @@ body {
     padding: 20px 0; /* เพิ่ม padding บนและล่างเพื่อให้ดูสมดุล */
 }
 
+.h1, h1 {
+    color: #e3e36f;
+}
+
 .centered-container {
     display: flex;
     justify-content: center;
@@ -73,6 +77,7 @@ form {
 label {
     display: block;
     margin-bottom: 5px;
+    color: #e3e36f;
 }
 
 input[type="text"], select {
@@ -86,18 +91,100 @@ input[type="text"], select {
 table {
     width: 100%;
     border-collapse: collapse;
+    color: #e3e36f; /* เปลี่ยนสีฟอนต์ของข้อมูลในตาราง */
 }
+
 th, td {
     border: 1px solid #e3e36f;
     padding: 8px;
     text-align: center;
+    color: #e3e36f; /* เปลี่ยนสีฟอนต์ของข้อมูลในตาราง */
+}
+
+
+
+/* Popup Modal Styles */
+.modal-content {
+    background-color: #b4232a; /* เปลี่ยนสีพื้นหลังของ modal */
+    color: #e3e36f; /* สีฟอนต์ */
+    border-radius: 10px; /* เพิ่มความโค้งให้มุม */
+    border: 1px solid #e3e36f; /* กำหนดสี border */
+}
+
+.modal-header {
+    border-bottom: 1px solid #e3e36f; /* กำหนดสี border ของ header */
+}
+
+.modal-title {
+    color: #e3e36f; /* สีฟอนต์ของ title */
+}
+
+.close {
+    color: #000000; /* สีของปุ่มปิด */
+    opacity: 1; /* ให้มองเห็นได้ชัดเจน */
+}
+
+.close:hover {
+    color: #e3e36f; /* สีของปุ่มปิดเมื่อ hover */
+}
+
+.modal-body input[type="text"],
+.modal-body select,
+.modal-body input[type="number"] {
+    background-color: #fff; /* สีพื้นหลังของ input */
+    color: #000; /* สีฟอนต์ของ input */
+    border: 1px solid #ccc; /* สี border ของ input */
+    border-radius: 4px; /* เพิ่มความโค้งให้มุม */
+    padding: 10px; /* เพิ่ม padding */
+    width: 100%; /* กำหนดความกว้าง */
+    margin-bottom: 10px; /* เพิ่มระยะห่างด้านล่าง */
+}
+
+.modal-footer {
+    border-top: 1px solid #e3e36f; /* กำหนดสี border ของ footer */
+}
+
+.modal-footer .btn {
+    background-color: #e3e36f; /* สีพื้นหลังของปุ่ม */
+    color: #b4232a; /* สีฟอนต์ของปุ่ม */
+    border: none; /* เอา border ออก */
+    border-radius: 4px; /* เพิ่มความโค้งให้มุม */
+    padding: 10px 20px; /* เพิ่ม padding */
+}
+
+.modal-footer .btn:hover {
+    background-color: #ffffff; /* สีพื้นหลังของปุ่มเมื่อ hover */
+    color: #b4232a; /* สีฟอนต์ของปุ่มเมื่อ hover */
 }
 
 .action-btn {
-    width: 75px; /* Adjust this value as needed */
-    display: inline-block;
-    text-align: center;
-    padding: 5px 0; /* Adjust this value as needed */
-    margin-right: 5px;
-    gap: 5px
+    width: 75px !important; /* Adjust this value as needed */
+    display: inline-block !important;
+    text-align: center !important;
+    padding: 5px 0 !important; /* Adjust this value as needed */
+    margin-right: 5px !important;
+    gap: 5px !important;
+    border: none !important; /* เอา border ออก */
+    border-radius: 4px !important; /* เพิ่มความโค้งให้มุม */
 }
+
+.btn-edit {
+    background-color: #3498db !important; /* สีพื้นหลังของปุ่ม Edit */
+    color: #ffffff !important; /* สีฟอนต์ของปุ่ม Edit */
+}
+
+.btn-edit:hover {
+    background-color: #2980b9 !important; /* สีพื้นหลังของปุ่ม Edit เมื่อ hover */
+    color: #ffffff !important; /* สีฟอนต์ของปุ่ม Edit เมื่อ hover */
+}
+
+.btn-delete {
+    background-color: #e74c3c !important; /* สีพื้นหลังของปุ่ม Delete */
+    color: #ffffff !important; /* สีฟอนต์ของปุ่ม Delete */
+}
+
+.btn-delete:hover {
+    background-color: #c0392b !important; /* สีพื้นหลังของปุ่ม Delete เมื่อ hover */
+    color: #ffffff !important; /* สีฟอนต์ของปุ่ม Delete เมื่อ hover */
+}
+

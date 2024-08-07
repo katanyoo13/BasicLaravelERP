@@ -46,3 +46,4 @@ Route::middleware('auth')->group(function () {
     Route::resource('journals', JournalController::class);
     Route::resource('journal_entry_details', JournalEntryDetailController::class);
 });
+
