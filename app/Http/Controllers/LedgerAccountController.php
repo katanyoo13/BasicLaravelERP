@@ -25,35 +25,47 @@ class LedgerAccountController extends Controller
             'account_number' => 'required|unique:general_ledgers',
             'account_name' => 'required',
             'account_type' => 'required',
-            'balance' => 'required|numeric'
+            'balance' => 'required|numeric',
         ]);
 
-        GeneralLedgers::create($request->all());
-        return redirect()->route('ledger_accounts.index')->with('success', 'Ledger Account created successfully.');
+        $ledgerAccount = GeneralLedgers::create($request->all());
+
+        return response()->json(['success' => true, 'ledgerAccount' => $ledgerAccount]);
     }
 
-    public function edit(GeneralLedgers $ledgerAccount)
+    public function edit($id)
     {
-        $accountTypes = ['Assets', 'Liabilities', 'Equity', 'Revenue', 'Expenses'];
-        return view('GeneralLedger.ledger_accounts_edit', compact('ledgerAccount', 'accountTypes'));
+        $ledgerAccount = GeneralLedgers::find($id);
+        
+        if ($ledgerAccount) {
+            return response()->json(['success' => true, 'ledgerAccount' => $ledgerAccount]);
+        } else {
+            return response()->json(['success' => false, 'message' => 'Ledger Account not found']);
+        }
     }
 
-    public function update(Request $request, GeneralLedgers $ledgerAccount)
-    {
-        $request->validate([
-            'account_number' => 'required|unique:general_ledgers,account_number,' . $ledgerAccount->ledger_id . ',ledger_id',
-            'account_name' => 'required',
-            'account_type' => 'required',
-            'balance' => 'required|numeric'
-        ]);
 
+    public function update(Request $request, $id)
+    {
+        $ledgerAccount = GeneralLedgers::find($id);
         $ledgerAccount->update($request->all());
-        return redirect()->route('ledger_accounts.index')->with('success', 'Ledger Account updated successfully.');
+
+        return response()->json(['success' => true, 'ledgerAccount' => $ledgerAccount]);
     }
 
-    public function destroy(GeneralLedgers $ledgerAccount)
+    public function destroy($id)
     {
-        $ledgerAccount->delete();
-        return redirect()->route('ledger_accounts.index')->with('success', 'Ledger Account deleted successfully.');
+        $ledgerAccount = GeneralLedgers::find($id);
+        
+        if ($ledgerAccount) {
+            $ledgerAccount->delete();
+            return response()->json(['success' => true]);
+        } else {
+            return response()->json(['success' => false, 'message' => 'Ledger Account not found']);
+        }
     }
 }
+
+
+
+
