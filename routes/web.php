@@ -43,7 +43,11 @@ Route::middleware('auth')->group(function () {
     
     // Resource routes
     Route::resource('ledger_accounts', LedgerAccountController::class);
+    Route::get('/ledger-accounts/{id}/edit', [LedgerAccountController::class, 'edit']);
+    Route::post('/ledger-accounts/{id}', [LedgerAccountController::class, 'update']);
+    Route::post('/ledger-accounts', [LedgerAccountController::class, 'store']);
+    Route::delete('/ledger-accounts/{id}', [LedgerAccountController::class, 'destroy']);
+
     Route::resource('journals', JournalController::class);
     Route::resource('journal_entry_details', JournalEntryDetailController::class);
 });
-

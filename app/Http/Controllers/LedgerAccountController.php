@@ -13,12 +13,6 @@ class LedgerAccountController extends Controller
         return view('GeneralLedger.ledger_accounts', compact('ledgerAccounts'));
     }
 
-    public function create()
-    {
-        $accountTypes = ['Assets', 'Liabilities', 'Equity', 'Revenue', 'Expenses'];
-        return view('GeneralLedger.ledger_accounts_create', compact('accountTypes'));
-    }
-
     public function store(Request $request)
     {
         $request->validate([
@@ -35,19 +29,28 @@ class LedgerAccountController extends Controller
 
     public function edit($id)
     {
-        $ledgerAccount = GeneralLedgers::find($id);
-        
-        if ($ledgerAccount) {
-            return response()->json(['success' => true, 'ledgerAccount' => $ledgerAccount]);
-        } else {
-            return response()->json(['success' => false, 'message' => 'Ledger Account not found']);
+        \Log::info('Attempting to fetch ledger account with ID: ' . $id);
+
+        try {
+            $ledgerAccount = GeneralLedgers::findOrFail($id);
+            \Log::info('Ledger account found: ' . $ledgerAccount->account_name);
+            return response()->json($ledgerAccount);
+        } catch (\Exception $e) {
+            \Log::error('Error fetching ledger account: ' . $e->getMessage());
+            return response()->json(['error' => 'Ledger account not found'], 404);
         }
     }
 
-
     public function update(Request $request, $id)
     {
-        $ledgerAccount = GeneralLedgers::find($id);
+        $ledgerAccount = GeneralLedgers::findOrFail($id);
+        $request->validate([
+            'account_number' => 'required|unique:general_ledgers,account_number,' . $id . ',ledger_id',
+            'account_name' => 'required',
+            'account_type' => 'required',
+            'balance' => 'required|numeric',
+        ]);
+
         $ledgerAccount->update($request->all());
 
         return response()->json(['success' => true, 'ledgerAccount' => $ledgerAccount]);
@@ -65,7 +68,3 @@ class LedgerAccountController extends Controller
         }
     }
 }
-
-
-
-
