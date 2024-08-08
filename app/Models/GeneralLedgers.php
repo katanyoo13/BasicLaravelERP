@@ -9,13 +9,12 @@ class GeneralLedgers extends Model
 {
     use HasFactory;
 
+    protected $table = 'general_ledgers';
+
     protected $primaryKey = 'ledger_id';
 
     protected $fillable = [
-        'account_number', 
-        'account_name', 
-        'account_type', 
-        'balance'
+        'account_number', 'account_name', 'account_type', 'balance',
     ];
 
     // ความสัมพันธ์กับ JournalEntryDetails
