@@ -49,5 +49,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/ledger-accounts/{id}', [LedgerAccountController::class, 'destroy']);
 
     Route::resource('journals', JournalController::class);
+    Route::get('/journals/{id}/edit', [JournalController::class, 'edit']);
+    Route::post('/journals/{id}', [JournalController::class, 'update']);
+    Route::post('/journals', [JournalController::class, 'store']);
+    Route::delete('/journals/{id}', [JournalController::class, 'destroy']);
+
     Route::resource('journal_entry_details', JournalEntryDetailController::class);
+    Route::get('/journal_entry_details/{id}/edit', [JournalEntryDetailController::class, 'edit']);
+    Route::post('/journal_entry_details/{id}', [JournalEntryDetailController::class, 'update']);
+    Route::post('/journal_entry_details', [JournalEntryDetailController::class, 'store']);
+    Route::delete('/journal_entry_details/{id}', [JournalEntryDetailController::class, 'destroy']);
 });

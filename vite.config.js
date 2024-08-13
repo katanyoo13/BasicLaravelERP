@@ -12,6 +12,8 @@ export default defineConfig({
                 'resources/js/sidebar.js',
                 'resources/js/dashboard.js',
                 'resources/js/general_ledger/ledger_accounts.js',
+                'resources/js/general_ledger/journals.js',
+                'resources/js/general_ledger/journal_entry_details.js',
             ],
             refresh: true,
         }),

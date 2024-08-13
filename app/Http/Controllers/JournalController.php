@@ -27,16 +27,27 @@ class JournalController extends Controller
             'total_credit' => 'required|numeric'
         ]);
 
-        Journals::create($request->all());
-        return redirect()->route('journals.index')->with('success', 'Journal Entry created successfully.');
+        $journal = Journals::create($request->all());
+        return response()->json(['success' => true, 'message' => 'Journal Entry created successfully.', 'data' => $journal]);
     }
 
-    public function edit(Journals $journal)
+
+    public function edit($id)
     {
-        return view('GeneralLedger.journals_edit', compact('journal'));
+        \Log::info('Attempting to fetch journal entry with ID: ' . $id);
+    
+        try {
+            $journalEntry = Journals::findOrFail($id);
+            \Log::info('Journal entry found: ' . $journalEntry->description);
+            return response()->json($journalEntry);
+        } catch (\Exception $e) {
+            \Log::error('Error fetching journal entry: ' . $e->getMessage());
+            return response()->json(['error' => 'Journal entry not found'], 404);
+        }
     }
+    
 
-    public function update(Request $request, Journals $journal)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'entry_date' => 'required|date',
@@ -45,13 +56,25 @@ class JournalController extends Controller
             'total_credit' => 'required|numeric'
         ]);
 
+        $journal = Journals::findOrFail($id);
         $journal->update($request->all());
-        return redirect()->route('journals.index')->with('success', 'Journal Entry updated successfully.');
+
+        return response()->json(['success' => true, 'message' => 'Journal Entry updated successfully.']);
     }
 
-    public function destroy(Journals $journal)
+    public function destroy($id)
     {
-        $journal->delete();
-        return redirect()->route('journals.index')->with('success', 'Journal Entry deleted successfully.');
+        $journal = Journals::find($id);
+        
+        if ($journal) {
+            $journal->delete();
+            return response()->json(['success' => true]);
+        } else {
+            return response()->json(['success' => false, 'message' => 'Journal Entry not found']);
+        }
     }
+    
+
+
 }
+

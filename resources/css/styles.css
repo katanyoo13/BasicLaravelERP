@@ -188,3 +188,24 @@ th, td {
     color: #ffffff !important; /* สีฟอนต์ของปุ่ม Delete เมื่อ hover */
 }
 
+.deleteJournalBtn {
+    background-color: #e74c3c !important; /* สีพื้นหลังของปุ่ม Delete */
+    color: #ffffff !important; /* สีฟอนต์ของปุ่ม Delete */
+}
+
+.deleteJournalBtn:hover {
+    background-color: #e74c3c !important; /* สีพื้นหลังของปุ่ม Delete */
+    color: #ffffff !important; /* สีฟอนต์ของปุ่ม Delete */
+}
+
+.deleteJournalDetailsBtn {
+    background-color: #e74c3c !important; /* สีพื้นหลังของปุ่ม Delete */
+    color: #ffffff !important; /* สีฟอนต์ของปุ่ม Delete */
+}
+
+.deleteJournalDetailsBtn:hover {
+    background-color: #e74c3c !important; /* สีพื้นหลังของปุ่ม Delete */
+    color: #ffffff !important; /* สีฟอนต์ของปุ่ม Delete */
+}
+
+
