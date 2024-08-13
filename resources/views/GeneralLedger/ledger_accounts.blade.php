@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1>Ledger Accounts</h1>
-    <button id="addLedgerAccountBtn" class="btn btn-primary mb-3">Add New Ledger Account</button>
+    <button id="addLedgerAccountBtn" class="btn btn-success mb-3">Add New Ledger Account</button>
     <table class="table">
         <thead>
             <tr>
